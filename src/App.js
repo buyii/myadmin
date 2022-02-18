@@ -3,9 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import './App.less';
 import Layout from './Layout/index'
-// import Login from './pages/Login'
-// import Home from './pages/home/Home'
-// import About from './pages/about/About'
 import {adminRouter,mainRouter} from './router'
 function App(){
   // RequireAuth 组件相当于一个拦截器，是否返回被拦截的组件要听他的

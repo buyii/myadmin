@@ -1,13 +1,8 @@
 import axios from 'axios'
+import {message} from 'antd';
+import store from '../store/index'
+import { navTo } from '../store/Action'
 
-// import store from "@store";
-// import * as storage from './storage'
-
-// import vm from '@/main'
-
-// axios.defaults.withCredentials = true
-
-// multipart/form-data
 function build (url, method, data, params = null, contentType = 'application/json') {
   const headers = { 'Content-Type': contentType }
 
@@ -32,21 +27,23 @@ async function callback (url, obj) {
       }
     })
     .catch(function (error) {
-        console.log(error)
       if (error.response) {
+        console.log(error.response)
         switch (error.response.status) {
             case 401 /** token未授权或token授权失败，过期等等**/:
                 // 401 清除token信息并跳转到登录页面
-                // storage.ClearStorage()
-                // router.push('/account/login')
-                break
-            case 404 /** 未找到页面**/:
-                // 404 跳转到404页面
-                // router.push({
-                //   path: 'notfound'
-                // })
+                if (localStorage) {
+                  // localStorage.clear()
+                }
+                message.error('登陆失效，请重新登录')
+                store.dispatch(navTo("/login"))
                 break
             default: 
+              if(error.response.data.msg){
+                message.error(error.response.data.msg)
+              }else{
+                message.error(error.response.statusText)
+              }
         }
       }
       return error.response

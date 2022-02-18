@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import '../App.less';
-import axios from 'axios';
 import * as Api from '../api/login.js'
 // v6版本编程导航使用 useNavigate (以下为引入代码)
 import {  useNavigate } from "react-router-dom";
@@ -11,22 +10,15 @@ function Login(props){
     const onFinish = async (values) => {
         let result = await Api.login(values)
         console.log(result)
-        if(result.code===0){
+        if(result.success){
             localStorage.setItem('token',result.data.token)
             navigate(`/`);
         }
     }
     const register = async () => {
-        let result = await Api.queryTaskList()
+        let data = form.getFieldsValue()
+        let result = await Api.register(data)
         console.log(result)
-        console.log(1)
-        // axios.get('http://192.168.19.39:8088/api/queryTaskList')
-        // .then(function (response) {
-        //     console.log(response);
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
     }
   return (
     <div className='login-warp'>

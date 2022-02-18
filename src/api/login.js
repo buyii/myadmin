@@ -13,8 +13,4 @@ export function login (data) {
 export function register (data) {
   return request.Post(`${server}/${module}/register`, data)
 }
-// 注册
-export function queryTaskList (data) {
-  return request.Get(`${server}/${module}/queryTaskList`, data)
-}
 
