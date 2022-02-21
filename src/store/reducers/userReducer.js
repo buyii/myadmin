@@ -1,9 +1,7 @@
 import { SET_NAV_TO } from "../Action";
 
-
-
 const initState = {
-    path: ''
+    path: null
 }
 
 const userReducer = (state = initState,action) => {

@@ -3,6 +3,7 @@ import {message} from 'antd';
 import store from '../store/index'
 import { navTo } from '../store/Action'
 
+
 function build (url, method, data, params = null, contentType = 'application/json') {
   const headers = { 'Content-Type': contentType }
 

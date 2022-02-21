@@ -5,6 +5,6 @@ const module = 'api'
 
 // 查询任务列表
 export function queryTaskList (data) {
-  return request.Get(`${server}/${module}/queryTaskList1`, data)
+  return request.Get(`${server}/${module}/queryTaskList`, data)
 }
 

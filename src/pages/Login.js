@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
 import '../App.less';
 import * as Api from '../api/login.js'
 // v6版本编程导航使用 useNavigate (以下为引入代码)
 import {  useNavigate } from "react-router-dom";
+import store from '../store/index'
+import { navTo } from '../store/Action'
 function Login(props){
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -20,6 +22,9 @@ function Login(props){
         let result = await Api.register(data)
         console.log(result)
     }
+    useEffect(() => {
+        store.dispatch(navTo(null))
+    })
   return (
     <div className='login-warp'>
         <div className='login-title'>登录</div>

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import { connect } from 'react-redux'
 import './App.less';
 import Layout from './Layout/index'
 import {adminRouter,mainRouter} from './router'
-function App(){
+import { useNavigate } from "react-router-dom";
+function App(props){
+  let navigate = useNavigate();
+  console.log(props,new Date())
+  if(props.path){
+    navigate(props.path)
+  }
+
   // RequireAuth 组件相当于一个拦截器，是否返回被拦截的组件要听他的
   function RequireAuth({ children }) {
     const authed = localStorage.getItem('token')
@@ -41,5 +48,7 @@ function App(){
       </Routes>
   );
 }
-
-export default App;
+function mapStateToProps(state) {
+  return { path: state.userReducer.path }
+}
+export default connect(mapStateToProps)(App);
