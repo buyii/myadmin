@@ -1,10 +1,10 @@
 
-export const SET_NAV_TO = 'NAV_TO'   //设置跳转
+export const SET_Expire = 'Expire'   //设置跳转
 
-export function navTo(path = '/'){
+export function setExpire(expire = false){
     return {
-        type: SET_NAV_TO,
-        path: path
+        type: SET_Expire,
+        expire: expire
     }
  }
 

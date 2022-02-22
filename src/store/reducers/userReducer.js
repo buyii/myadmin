@@ -1,15 +1,15 @@
-import { SET_NAV_TO } from "../Action";
+import { SET_Expire } from "../Action";
 
 const initState = {
-    path: null
+    expire: false
 }
 
 const userReducer = (state = initState,action) => {
     switch(action.type){
-        case SET_NAV_TO:
+        case SET_Expire:
             return {
                 ...state,
-                path: action.path
+                expire: action.expire
             }
         default:
             return state

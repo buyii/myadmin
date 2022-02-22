@@ -5,7 +5,7 @@ import * as Api from '../api/login.js'
 // v6版本编程导航使用 useNavigate (以下为引入代码)
 import {  useNavigate } from "react-router-dom";
 import store from '../store/index'
-import { navTo } from '../store/Action'
+import { setExpire } from '../store/Action'
 function Login(props){
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -15,6 +15,7 @@ function Login(props){
         if(result.success){
             localStorage.setItem('token',result.data.token)
             navigate(`/`);
+            store.dispatch(setExpire())
         }
     }
     const register = async () => {
@@ -23,7 +24,7 @@ function Login(props){
         console.log(result)
     }
     useEffect(() => {
-        store.dispatch(navTo(null))
+        // store.dispatch(setExpire())
     })
   return (
     <div className='login-warp'>

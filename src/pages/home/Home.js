@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
 import { Button } from 'antd';
 import { queryTaskList } from '../../api/Task.js'
-import store from '../../store/index'
-import { navTo } from '../../store/Action'
 function Home(props){
   console.log(props)
   const onCheck = () => {
-    store.dispatch(navTo("/login"))
+    getTableLists()
   }
 
   const getTableLists = async() => {
       const result = await queryTaskList()
-      console.log(result)
       if (result.data.success) {
         
       }

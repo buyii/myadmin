@@ -1,9 +1,7 @@
 import axios from 'axios'
 import {message} from 'antd';
 import store from '../store/index'
-import { navTo } from '../store/Action'
-
-
+import { setExpire } from '../store/Action'
 function build (url, method, data, params = null, contentType = 'application/json') {
   const headers = { 'Content-Type': contentType }
 
@@ -37,7 +35,7 @@ async function callback (url, obj) {
                   // localStorage.clear()
                 }
                 message.error('登陆失效，请重新登录')
-                store.dispatch(navTo("/login"))
+                store.dispatch(setExpire(true))
                 break
             default: 
               if(error.response.data.msg){
