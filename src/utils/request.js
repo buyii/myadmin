@@ -32,7 +32,7 @@ async function callback (url, obj) {
             case 401 /** token未授权或token授权失败，过期等等**/:
                 // 401 清除token信息并跳转到登录页面
                 if (localStorage) {
-                  // localStorage.clear()
+                  localStorage.clear()
                 }
                 message.error('登陆失效，请重新登录')
                 store.dispatch(setExpire(true))

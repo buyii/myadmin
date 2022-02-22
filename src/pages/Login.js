@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form, Input, Button } from 'antd';
 import '../App.less';
 import * as Api from '../api/login.js'
@@ -6,7 +6,7 @@ import * as Api from '../api/login.js'
 import {  useNavigate } from "react-router-dom";
 import store from '../store/index'
 import { setExpire } from '../store/Action'
-function Login(props){
+function Login(){
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const onFinish = async (values) => {
@@ -14,8 +14,8 @@ function Login(props){
         console.log(result)
         if(result.success){
             localStorage.setItem('token',result.data.token)
-            navigate(`/`);
             store.dispatch(setExpire())
+            navigate(`/`);
         }
     }
     const register = async () => {
@@ -23,9 +23,6 @@ function Login(props){
         let result = await Api.register(data)
         console.log(result)
     }
-    useEffect(() => {
-        // store.dispatch(setExpire())
-    })
   return (
     <div className='login-warp'>
         <div className='login-title'>登录</div>
