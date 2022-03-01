@@ -26,7 +26,7 @@ function App(props){
           }>
         {
           adminRouter.map((item, index) => {
-            if(index === 0){
+            if(item.home){
               return <Route exact key={index} index element={<item.component />} />
             }else{
               return <Route exact key={index} path={item.path} element={<item.component />} />

@@ -9,6 +9,6 @@ export const mainRouter = [
 
 // 需要登录
 export const adminRouter = [
-    { path: '/home', name: '首页', component: Home},
+    { path: '/home', home: true, name: '首页', component: Home},
     { path: '/about', name: 'About', component: About},
 ]
