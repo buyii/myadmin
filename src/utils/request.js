@@ -26,6 +26,7 @@ async function callback (url, obj) {
       }
     })
     .catch(function (error) {
+      console.log(error,'err')
       if (error.response) {
         console.log(error.response)
         switch (error.response.status) {
@@ -44,8 +45,9 @@ async function callback (url, obj) {
                 message.error(error.response.statusText)
               }
         }
+        return error.response
       }
-      return error.response
+      return error
     })
 }
 
